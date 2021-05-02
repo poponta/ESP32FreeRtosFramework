@@ -37,14 +37,6 @@ void AbstractTask::Reprise() {
     PreMain();
     Main();
     PostMain();
-  
-    // Calculate delay time
-    uint32_t end_time = rtos_->GetTickCount();
-    if (end_time - start_time > cycle_) {
-    // Application processing time over
-    // ToDo: Error handling
-    log_w("task cycle time over [%d][%d][%d]:", start_time, end_time, cycle_);
-    }
 
     // Transition to Blocked State
     rtos_->DelayTaskUntil(start_time, cycle_);
