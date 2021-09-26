@@ -23,6 +23,7 @@ class AbstractRtos {
                           int32_t xCoreID) = 0;
   virtual void DelayTask(uint32_t time_ms) = 0;
   virtual void DelayTaskUntil(uint32_t last_wake_time_ms, uint32_t interval_ms) = 0;
+  virtual void SuspendTask(TaskHandle xTaskToSuspend) = 0;
   virtual uint32_t GetTickCount() = 0;
 };
 #endif

@@ -20,6 +20,7 @@ class EspFreeRtos : public AbstractRtos {
                           int32_t xCoreID) final;
   virtual void DelayTask(uint32_t time_ms) final;
   virtual void DelayTaskUntil(uint32_t last_wake_time_ms, uint32_t interval_ms) final;
+  virtual void SuspendTask(TaskHandle xTaskToSuspend) final;
   virtual uint32_t GetTickCount() final;
 };
 #endif

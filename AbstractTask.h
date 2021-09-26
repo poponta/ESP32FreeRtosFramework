@@ -26,12 +26,13 @@ class AbstractTask {
 
   void Start();
   void Reprise();
+  void Suspend();
   virtual void Initialize() = 0;
   virtual void PreMain() = 0;
   virtual void Main() = 0;
   virtual void PostMain() = 0;
   virtual void Finalize() = 0;
-  void Stop();
+  void SuspendRequest();
 
   // For C language Interface (ex. FreeRTOS API)
   static void RepriseWrapper(void* _this) {
@@ -51,5 +52,6 @@ class AbstractTask {
   /*TaskHandle_t*/ void *handle_;
   CpuCore core_;
   AbstractRtos *rtos_;
+  bool is_suspend_req_;
 };
 #endif

@@ -5,19 +5,25 @@
 #include "EspFreeRtos.h"
 #include "RtosFactory.h"
 
-AbstractRtos* RtosFactory::Create(RtosKind rtos) {
-  AbstractRtos *ret = nullptr;
+namespace {
+  AbstractRtos *instance = nullptr;
+}
 
+AbstractRtos* RtosFactory::Create(RtosKind rtos) {
   switch (rtos) {
-    case RtosFactory::RtosKind::EspFreeRtos :
+    case RtosFactory::RtosKind::EspFreeRtos:
       {
         static EspFreeRtos esp_free_rtos;
-        ret =  &esp_free_rtos;
+        instance =  &esp_free_rtos;
       }
       break;
 
-    default :
+    default:
       break;
   }
-  return ret;
+  return instance;
+}
+
+AbstractRtos* RtosFactory::Get() {
+  return instance;
 }

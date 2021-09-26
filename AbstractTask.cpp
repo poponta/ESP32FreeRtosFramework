@@ -14,7 +14,8 @@ AbstractTask::AbstractTask(char *name, uint32_t cycle, uint16_t stack, uint32_t 
   cycle_(cycle),
   stack_(stack),
   priority_(priority),
-  core_(core)
+  core_(core),
+  is_suspend_req_(false)
 {
   memset(name_, 0, sizeof(name_));
   strncpy(name_, name, (sizeof(name_) - 1));
@@ -38,13 +39,21 @@ void AbstractTask::Reprise() {
     Main();
     PostMain();
 
+    if(is_suspend_req_ == true) {
+      Suspend();
+    }
+
     // Transition to Blocked State
     rtos_->DelayTaskUntil(start_time, cycle_);
   }
 }
 
-void AbstractTask::Stop() {
-  
+void AbstractTask::Suspend() {
+  rtos_->SuspendTask(nullptr);
+}
+
+void AbstractTask::SuspendRequest() {
+  is_suspend_req_ = true;
 }
 
 AbstractTask::TaskContainer& AbstractTask::GetTaskContainer() {

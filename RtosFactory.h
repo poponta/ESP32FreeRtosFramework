@@ -5,13 +5,13 @@
 #ifndef RTOS_FACTORY_H 
 #define RTOS_FACTORY_H 
 
-#include "AbstractRtos.h"
-
+class AbstractRtos;
 namespace RtosFactory{
   enum class RtosKind {
     EspFreeRtos,
   };
   AbstractRtos* Create(RtosKind rtos);
+  AbstractRtos* Get();
 };
 
 #endif

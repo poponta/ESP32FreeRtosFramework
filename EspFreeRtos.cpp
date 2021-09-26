@@ -25,6 +25,10 @@ void EspFreeRtos::DelayTaskUntil(uint32_t last_wake_time_ms, uint32_t interval_m
   vTaskDelayUntil(&tmp, interval_ms);
 }
 
+void EspFreeRtos::SuspendTask(TaskHandle xTaskToSuspend) {
+  vTaskSuspend(xTaskToSuspend);
+}
+
 uint32_t EspFreeRtos::GetTickCount() {
   return xTaskGetTickCount();
 }
