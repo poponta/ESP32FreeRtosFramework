@@ -1,7 +1,3 @@
-//
-//  Copyright (c) 2021 Hirotaka Yuno <create.future.technology@gmail.com>.  All right reserved.
-//
-
 #ifndef ABSTRACT_RTOS_H_
 #define ABSTRACT_RTOS_H_ 
 
@@ -24,6 +20,9 @@ class AbstractRtos {
   virtual void DelayTask(uint32_t time_ms) = 0;
   virtual void DelayTaskUntil(uint32_t last_wake_time_ms, uint32_t interval_ms) = 0;
   virtual void SuspendTask(TaskHandle xTaskToSuspend) = 0;
+  virtual void ResumeTask(TaskHandle xTaskToSuspend) = 0;
+  virtual void EnterCriticalSection() = 0;
+  virtual void LeaveCriticalSection() = 0;
   virtual uint32_t GetTickCount() = 0;
 };
 #endif

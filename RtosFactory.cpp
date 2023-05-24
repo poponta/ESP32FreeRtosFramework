@@ -1,7 +1,3 @@
-//
-//  Copyright (c) 2021 Hirotaka Yuno <create.future.technology@gmail.com>.  All right reserved.
-//
-
 #include "EspFreeRtos.h"
 #include "RtosFactory.h"
 

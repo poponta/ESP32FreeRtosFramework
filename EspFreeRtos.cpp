@@ -1,7 +1,3 @@
-//
-//  Copyright (c) 2021 Hirotaka Yuno <create.future.technology@gmail.com>.  All right reserved.
-//
-
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "EspFreeRtos.h"
@@ -27,6 +23,18 @@ void EspFreeRtos::DelayTaskUntil(uint32_t last_wake_time_ms, uint32_t interval_m
 
 void EspFreeRtos::SuspendTask(TaskHandle xTaskToSuspend) {
   vTaskSuspend(xTaskToSuspend);
+}
+
+void EspFreeRtos::ResumeTask(TaskHandle xTaskToResume) {
+  vTaskResume(xTaskToResume);
+}
+
+void EspFreeRtos::EnterCriticalSection() {
+  taskDISABLE_INTERRUPTS();
+}
+
+void EspFreeRtos::LeaveCriticalSection() {
+  taskENABLE_INTERRUPTS();
 }
 
 uint32_t EspFreeRtos::GetTickCount() {

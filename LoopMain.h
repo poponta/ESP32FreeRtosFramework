@@ -1,7 +1,3 @@
-//
-//  Copyright (c) 2019 Hirotaka Yuno <create.future.technology@gmail.com>.  All right reserved.
-//
-
 #ifndef LOOP_MAIN_H_
 #define LOOP_MAIN_H_
 
