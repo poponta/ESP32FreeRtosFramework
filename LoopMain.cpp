@@ -13,8 +13,6 @@ void LoopMain::Init() {
   uint32_t task_num = tasks.Size();
   int i = 0;
 
-  Serial.begin(115200);
-  Serial.println("# System Start");
   log_i("num of tasks : %d", task_num);
 
   for (auto &e : tasks) {
