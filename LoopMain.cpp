@@ -2,19 +2,11 @@
 #include "AbstractTask.h"
 #include "LoopMain.h"
 #include "SampleTask.h"
-#include "BatteryMonitorTask.h"
-// #include "BoxTask.h"
-#include "BoxControlTask.h"
-#include "DeviceScanTask.h"
 
 // Instantiate Concrete task here
 // AbstractTask(char *name, uint32_t cycle_ms, uint16_t stack_byte, uint32_t priority, CpuCore core);
-//BoxTask box_task("box", 100, 8192, 5, CpuCore::kSystemCore);
-BatteryMonitorTask battery_monitor_task("batmontsk", 100, 8192, 5, CpuCore::kSystemCore);
-BoxControlTask box_control_task("boxctrltsk", 100, 8192, 5, CpuCore::kSystemCore);
-DeviceScanTask device_scan_task("devicescantsk", 200, 8192, 5, CpuCore::kSystemCore);
-
-SampleTask sample_task1("sample1", 1000, 4096, 1, CpuCore::kAppCore);
+SampleTask sample_task1("sample1", 3000, 4096, 5, CpuCore::kSystemCore);
+SampleTask sample_task2("sample2", 3000, 4096, 5, CpuCore::kAppCore);
 
 void LoopMain::Init() {
   auto &tasks = AbstractTask::GetTaskContainer();
